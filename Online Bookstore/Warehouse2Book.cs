@@ -1,20 +1,9 @@
 ﻿namespace Online_Bookstore
 {
-	public class Book
+	public class Warehouse2Book : Book
 	{
-        public string author { get; set; }
-        public string title { get; set; }
-        public double price { get; set; }
-        public string genre { get; set; }
-        public double warehousePrice;
-
-        public Book(string title, string author, string genre, double price)
+        public Warehouse2Book(string title, string author, string genre, double price) : base(title, author, genre, price)
         {
-            this.title = title;
-            this.author = author;
-            this.genre = genre;
-            this.price = price;
-
             this.warehousePrice = calcWarehousePrice();
         }
 
@@ -23,19 +12,19 @@
             double buyerPrice = 0;
             if (price > 0 && price <= 10)
             {
-                buyerPrice = price + price * 0.02;
+                buyerPrice = price + price * 0.01;
             }
             else if (price > 10 && price <= 20)
             {
-                buyerPrice = price + price * 0.05;
+                buyerPrice = price + price * 0.04;
             }
             else if (price > 20 && price <= 30)
             {
-                buyerPrice = price + price * 0.07;
+                buyerPrice = price + price * 0.06;
             }
             else if (price > 30)
             {
-                buyerPrice = price + price * 0.1;
+                buyerPrice = price + price * 0.09;
             }
             else
             {
