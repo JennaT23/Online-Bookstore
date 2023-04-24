@@ -2,5 +2,6 @@
 {
 	public class Bookstore
 	{
+		private List<(string, int, List<Book>)> books;
 	}
 }
