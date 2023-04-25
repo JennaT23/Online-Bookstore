@@ -4,16 +4,16 @@
 	{
         public string author { get; set; }
         public string title { get; set; }
-        public double price { get; set; }
         public string genre { get; set; }
+        public int length { get; set; }
         public double warehousePrice;
 
-        public Book(string title, string author, string genre, double price)
+        public Book(string title, string author, string genre, int length)
         {
             this.title = title;
             this.author = author;
             this.genre = genre;
-            this.price = price;
+            this.length = length;
 
             this.warehousePrice = calcWarehousePrice();
         }
@@ -21,26 +21,23 @@
         protected virtual double calcWarehousePrice()
         {
             double buyerPrice = 0;
-            if (price > 0 && price <= 10)
+            if (length > 0 && length <= 50)
             {
-                buyerPrice = price + price * 0.02;
+                buyerPrice = 5.00;
             }
-            else if (price > 10 && price <= 20)
+            else if (length > 50 && length <= 150)
             {
-                buyerPrice = price + price * 0.05;
+                buyerPrice = 10.00;
             }
-            else if (price > 20 && price <= 30)
+            else if (length > 150 && length <= 300)
             {
-                buyerPrice = price + price * 0.07;
+                buyerPrice = 15.00;
             }
-            else if (price > 30)
+            else if (length > 300)
             {
-                buyerPrice = price + price * 0.1;
+                buyerPrice = 20.00;
             }
-            else
-            {
-                // invalid price
-            }
+
             return buyerPrice;
         }
 

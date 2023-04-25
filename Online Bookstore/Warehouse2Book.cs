@@ -2,7 +2,7 @@
 {
 	public class Warehouse2Book : Book
 	{
-        public Warehouse2Book(string title, string author, string genre, double price) : base(title, author, genre, price)
+        public Warehouse2Book(string title, string author, string genre, int length) : base(title, author, genre, length)
         {
             this.warehousePrice = calcWarehousePrice();
         }
@@ -10,32 +10,25 @@
         protected virtual double calcWarehousePrice()
         {
             double buyerPrice = 0;
-            if (price > 0 && price <= 10)
+            if (length > 0 && length <= 50)
             {
-                buyerPrice = price + price * 0.01;
+                buyerPrice = 4.00;
             }
-            else if (price > 10 && price <= 20)
+            else if (length > 50 && length <= 150)
             {
-                buyerPrice = price + price * 0.04;
+                buyerPrice = 8.00;
             }
-            else if (price > 20 && price <= 30)
+            else if (length > 150 && length <= 300)
             {
-                buyerPrice = price + price * 0.06;
+                buyerPrice = 13.50;
             }
-            else if (price > 30)
+            else if (length > 300)
             {
-                buyerPrice = price + price * 0.09;
+                buyerPrice = 23.00;
             }
-            else
-            {
-                // invalid price
-            }
+
             return buyerPrice;
         }
 
-        public double getWarehousePrice()
-        {
-            return warehousePrice;
-        }
     }
 }
