@@ -2,15 +2,20 @@
 {
 	public class GenreFilter : BookFilterAC
 	{
-		public override List<Book> apply(List<Book> books)
+		private string genre;
+		public GenreFilter(string genre)
 		{
-			List<Book> filteredBooks = new List<>();
+			this.genre = genre;
+		}
+		public override List<BookListing> apply(List<BookListing> books)
+		{
+			List<BookListing> filteredBooks = new List<BookListing>();
 
-			for (Book book : books)
+			foreach (BookListing book in books)
 			{
-				if (book.getGenre().equals(author))
+				if (book.genre.Equals(genre))
 				{
-					filteredBooks.add(book);
+					filteredBooks.Add(book);
 				}
 			}
 

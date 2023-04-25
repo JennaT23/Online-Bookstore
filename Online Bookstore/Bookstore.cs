@@ -7,7 +7,7 @@
         private Object lockObject;
         public BookFactoryIF warehouse;
         private List<BookListing> bookListings;
-
+        private BookFilterIF BookFilter;
 
         public Bookstore()
         {

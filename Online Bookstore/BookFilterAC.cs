@@ -2,6 +2,6 @@
 {
 	public abstract class BookFilterAC : BookFilterIF
 	{
-		public abstract List<Book> apply(List<Book> books);
+		public abstract List<BookListing> apply(List<BookListing> books);
 	}
 }

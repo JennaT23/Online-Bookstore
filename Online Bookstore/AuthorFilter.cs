@@ -10,15 +10,15 @@
 			this.author = author;
 		}
 
-		public override List<Book> apply(List<Book> books)
+		public override List<BookListing> apply(List<BookListing> books)
 		{
-			List<Book> filteredBooks = new List<>();
+			List<BookListing> filteredBooks = new List<BookListing>();
 
-			for (Book book : books)
+			foreach (BookListing book in books)
 			{
-				if (book.getAuthor().equals(author))
+				if (book.author.Equals(author))
 				{
-					filteredBooks.add(book);
+					filteredBooks.Add(book);
 				}
 			}
 
