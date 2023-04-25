@@ -7,7 +7,7 @@
             this.warehousePrice = calcWarehousePrice();
         }
 
-        protected virtual double calcWarehousePrice()
+        protected override double calcWarehousePrice()
         {
             double buyerPrice = 0;
             if (length > 0 && length <= 50)
