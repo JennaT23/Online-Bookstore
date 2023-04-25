@@ -6,7 +6,7 @@
         {
             this.warehousePrice = calcWarehousePrice();
         }
-
+        // heLPFWEHOF
         protected virtual double calcWarehousePrice()
         {
             double buyerPrice = 0;
