@@ -3,26 +3,24 @@
 	public class AuthorFilter : BookFilterAC
 	{
 
-		private String author;
-
-		public AuthorFilter(String author)
-		{
-			this.author = author;
+		public AuthorFilter(String author) : base(author) {	
+			this = this.apply(author);
 		}
 
-		public override List<BookListing> apply(List<BookListing> books)
+		public override BookFilterIF apply(string criteria)
 		{
-			List<BookListing> filteredBooks = new List<BookListing>();
+			List<BookListing> filteredBooks = this.bookListings;
 
-			foreach (BookListing book in books)
+			foreach (BookListing book in this.bookListings)
 			{
-				if (book.author.Equals(author))
+				if (book.author.Equals(criteria))
 				{
 					filteredBooks.Add(book);
 				}
 			}
+			this.bookListings = filteredBooks;
 
-			return filteredBooks;
+			return this;
 		}
 	}
 }

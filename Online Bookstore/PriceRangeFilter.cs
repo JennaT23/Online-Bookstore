@@ -1,25 +1,26 @@
 ﻿namespace Online_Bookstore
 {
-	public class PriceRangeFilter : BookFilterAC
+	public class PriceRangeFilter : BookFilterIF
 	{
-		private double minPrice;
-		private double maxPrice;
-		public PriceRangeFilter(double minPrice, double maxPrice) {
-			this.minPrice = minPrice;
-			this.maxPrice = maxPrice;
+		private double minPrice { get; set; }
+		private double maxPrice { get; set; }
+		public PriceRangeFilter(double min, double max) {
+			this.minPrice = min;
+			this.maxPrice = max;
 		}
-		public override List<BookListing> apply(List<BookListing> books)
+		public override BookFilterIF apply(double min, double max)
 		{
 			List<BookListing> filteredBooks = new List<BookListing>();	
 
-			foreach (BookListing book in books) 
+			foreach (BookListing book in this.bookListings) 
 			{
 				if (book.getPrice() >= minPrice && book.getPrice() <= maxPrice)
 				{
 					filteredBooks.Add(book);
 				}
 			}
-			return filteredBooks;
+			this.bookListings = filteredBooks;
+			return this;
 		}
 	}
 }

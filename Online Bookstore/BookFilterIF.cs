@@ -2,6 +2,7 @@
 {
 	public interface BookFilterIF
 	{
-		public List<BookListing> apply(List<BookListing> books);
+		public BookFilterIF apply(string search);
+		public BookFilterIF apply(double min, double max);
 	}
 }

@@ -23,7 +23,7 @@
         }
 
         // change back
-        public override double getPrice()
+        public double getPrice()
         {
             myLock.readLock();
             double price = this.price;
@@ -32,7 +32,7 @@
         }
 
         // change back
-        public override void setPrice(double price)
+        public void setPrice(double price)
         {
             myLock.writeLock();
             string message = getMessage(price, this.price);
