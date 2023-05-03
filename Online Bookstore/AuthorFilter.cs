@@ -3,9 +3,7 @@
 	public class AuthorFilter : BookFilterAC
 	{
 
-		public AuthorFilter(String author) : base(author) {	
-			this = this.apply(author);
-		}
+		public AuthorFilter(String author) : base(author) {	}
 
 		public override BookFilterIF apply(string criteria)
 		{
