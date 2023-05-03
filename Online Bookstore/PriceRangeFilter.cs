@@ -2,14 +2,17 @@
 {
 	public class PriceRangeFilter : BookFilterIF
 	{
-		private double minPrice { get; set; }
-		private double maxPrice { get; set; }
+		public double minPrice { get; set; }
+		public double maxPrice { get; set; }
+		public List<BookListing> bookListings { get; set; }
+
 		public PriceRangeFilter(double min, double max) {
 			this.minPrice = min;
 			this.maxPrice = max;
 		}
-		public override BookFilterIF apply(double min, double max)
+		public BookFilterIF apply(string criteria)
 		{
+			string[] min = criteria.Split(',');
 			List<BookListing> filteredBooks = new List<BookListing>();	
 
 			foreach (BookListing book in this.bookListings) 

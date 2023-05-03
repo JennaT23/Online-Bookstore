@@ -8,12 +8,6 @@
 		{
 			this.criteria = criteria;
 		}
-
-		protected BookFilterAC(double min, double max)
-		{
-		}
-
 		public abstract BookFilterIF apply(string search);
-		public abstract BookFilterIF apply(double min, double max);
 	}
 }
