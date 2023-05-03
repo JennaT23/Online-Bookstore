@@ -9,7 +9,7 @@
             observers = new List<ObserverIF>();
         }
 
-        public void changed(string message)
+        protected void changed(string message)
         {
             foreach (ObserverIF observer in observers)
             {
@@ -35,6 +35,7 @@
         }
 
         protected abstract string getMessage(double newPrice, double oldPrice);
+
     }
 }
 

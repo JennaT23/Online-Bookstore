@@ -8,15 +8,15 @@
 
             string warehouse = getCheapestWarehouse(title, author, genre, length, media);
 
-            // reflection
-            Type t = Type.GetType("Warehouses." + warehouse, true, true);
-            ConstructorInfo ci = t.GetConstructor(new[] { typeof(string), typeof(string), typeof(string), typeof(int) });
+            Assembly assembly = Assembly.Load("Warehouses"); // laod in the assebly the class is in
+            Type type = assembly.GetType("Warehouses." + warehouse, true, true); // get the type of the desired class
 
             for (int i = 0; i < quantity; i++)
             {
-                object o = ci.Invoke(new object[] { title, author, genre, length });
+                // create an object instance of the class using a constructor that takes parameters
+                object instance = Activator.CreateInstance(type, new object[] { title, author, genre, length });
 
-                books.Add((Book)o);
+                books.Add((Book)instance);
             }
             return books;
         }
@@ -36,53 +36,53 @@
 
                 if (book.warehousePrice < book1.warehousePrice && book.warehousePrice < book2.warehousePrice)
                 {
-                    warehouseType = "book";
+                    warehouseType = "Book";
                 }
                 else if (book1.warehousePrice < book.warehousePrice && book1.warehousePrice < book2.warehousePrice)
                 {
-                    warehouseType = "warehouse1book";
+                    warehouseType = "Warehouse1Book";
                 }
                 else// (book2.price < book1.price && book2.price < book.price)
                 {
-                    warehouseType = "warehouse2book";
+                    warehouseType = "Warehouse2Book";
                 }
             }
             else if (media == "audio")
             {
-                book = new AudioBook(title, author, genre, length);
-                book1 = new Warehouse1AudioBook(title, author, genre, length);
-                book2 = new Warehouse2AudioBook(title, author, genre, length);
+                book = new Audiobook(title, author, genre, length);
+                book1 = new Warehouse1Audiobook(title, author, genre, length);
+                book2 = new Warehouse2Audiobook(title, author, genre, length);
 
                 if (book.warehousePrice < book1.warehousePrice && book.warehousePrice < book2.warehousePrice)
                 {
-                    warehouseType = "audiobook";
+                    warehouseType = "AudioBook";
                 }
                 else if (book1.warehousePrice < book.warehousePrice && book1.warehousePrice < book2.warehousePrice)
                 {
-                    warehouseType = "warehouse1audiobook";
+                    warehouseType = "Warehouse1Audiobook";
                 }
                 else// (book2.price < book1.price && book2.price < book.price)
                 {
-                    warehouseType = "warehouse2audiobook";
+                    warehouseType = "Warehouse2Audiobook";
                 }
             }
             else // (media == "digital")
             {
-                book = new DigitalBook(title, author, genre, length);
-                book1 = new Warehouse1DigitalBook(title, author, genre, length);
-                book2 = new Warehouse2DigitalBook(title, author, genre, length);
+                book = new Digitalbook(title, author, genre, length);
+                book1 = new Warehouse1Digitalbook(title, author, genre, length);
+                book2 = new Warehouse2Digitalbook(title, author, genre, length);
 
                 if (book.warehousePrice < book1.warehousePrice && book.warehousePrice < book2.warehousePrice)
                 {
-                    warehouseType = "digitalbook";
+                    warehouseType = "DigitalBook";
                 }
                 else if (book1.warehousePrice < book.warehousePrice && book1.warehousePrice < book2.warehousePrice)
                 {
-                    warehouseType = "warehouse1digitalbook";
+                    warehouseType = "Warehouse1Digitalbook";
                 }
                 else// (book2.price < book1.price && book2.price < book.price)
                 {
-                    warehouseType = "warehouse2digitalbook";
+                    warehouseType = "Warehouse2Digitalbook";
                 }
             }
 

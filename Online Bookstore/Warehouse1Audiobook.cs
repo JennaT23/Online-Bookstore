@@ -4,6 +4,7 @@
 	{
         public Warehouse1Audiobook(string title, string author, string genre, int length) : base(title, author, genre, length)
         {
+            this.setMedia("audio");
             this.warehousePrice = calcWarehousePrice();
         }
 

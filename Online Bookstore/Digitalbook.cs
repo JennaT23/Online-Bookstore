@@ -4,6 +4,7 @@
 	{
         public Digitalbook(string title, string author, string genre, int length) : base(title, author, genre, length)
         {
+            this.setMedia("digital");
             this.warehousePrice = calcWarehousePrice();
         }
 

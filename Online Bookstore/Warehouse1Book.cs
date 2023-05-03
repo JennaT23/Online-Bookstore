@@ -1,9 +1,11 @@
 ﻿namespace Online_Bookstore
 {
-	public class Warehouse1Book : Book
-	{
+    public class Warehouse1Book : Book
+    {
+
         public Warehouse1Book(string title, string author, string genre, int length) : base(title, author, genre, length)
         {
+            this.setMedia("physical");
             this.warehousePrice = calcWarehousePrice();
         }
 
