@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Reflection;
 
 namespace Online_Bookstore
 {
@@ -9,7 +10,7 @@ namespace Online_Bookstore
         private Object lockObject;
         public BookFactoryIF warehouse;
         private List<BookListing> bookListings;
-
+        public BookFilterIF filter;
 
         public Bookstore()
         {
@@ -115,5 +116,26 @@ namespace Online_Bookstore
             }
             return customerBook;
         }
-    }
+
+
+
+		public List<Book> getBooks(string title, string author, string genre, int length, string media, int quantity)
+		{
+			List<Book> books = new List<Book>();
+
+			//string warehouse = getCheapestWarehouse(title, author, genre, length, media);
+
+			//Assembly assembly = Assembly.Load("Warehouse"); // laod in the assembly the class is in
+			//Type type = assembly.GetType("Warehouse." + warehouse, true, true); // get the type of the desired class
+
+			for (int i = 0; i < quantity; i++)
+			{
+                // create an object instance of the class using a constructor that takes parameters
+                //object instance = Activator.CreateInstance(type, new object[] { title, author, genre, length });
+                Book book = new Book(title, author, genre, length);
+				books.Add(book);
+			}
+			return books;
+		}
+	}
 }

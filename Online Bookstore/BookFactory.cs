@@ -10,15 +10,16 @@ namespace Online_Bookstore
 
             string warehouse = getCheapestWarehouse(title, author, genre, length, media);
 
-            Assembly assembly = Assembly.Load("Warehouses"); // laod in the assebly the class is in
-            Type type = assembly.GetType("Warehouses." + warehouse, true, true); // get the type of the desired class
+            //Assembly assembly = Assembly.Load("Warehouse"); // laod in the assembly the class is in
+            //Type type = assembly.GetType("Warehouse." + warehouse, true, true); // get the type of the desired class
 
             for (int i = 0; i < quantity; i++)
             {
                 // create an object instance of the class using a constructor that takes parameters
-                object instance = Activator.CreateInstance(type, new object[] { title, author, genre, length });
+                //object instance = Activator.CreateInstance(type, new object[] { title, author, genre, length });
 
-                books.Add((Book)instance);
+                Book book = new Book(title, author, genre, length);
+                books.Add(book);
             }
             return books;
         }

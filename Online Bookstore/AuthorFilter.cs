@@ -2,21 +2,19 @@
 {
 	public class AuthorFilter : BookFilterAC
 	{
-
-		public AuthorFilter(String author) : base(author) {	}
-
-		public override BookFilterIF apply(string criteria)
+		public AuthorFilter(string criteria, List<BookListing> bookListing) : base(criteria, bookListing) { }
+		public override BookFilterIF apply(string criteria, List<BookListing> books)
 		{
-			List<BookListing> filteredBooks = this.bookListings;
-
-			foreach (BookListing book in this.bookListings)
+			List<BookListing> filteredBooks = new List<BookListing>();
+			//this.bookListing = new;
+			foreach (BookListing book in this.bookListing)
 			{
 				if (book.author.Equals(criteria))
 				{
 					filteredBooks.Add(book);
 				}
 			}
-			this.bookListings = filteredBooks;
+			this.bookListing = filteredBooks;
 
 			return this;
 		}
