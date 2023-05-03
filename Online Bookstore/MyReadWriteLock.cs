@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections;
 
-public class MyReadWriteLock
+namespace Online_Bookstore
 {
-	public MyReadWriteLock()
+    public class MyReadWriteLock
     {
         private int waitingForReadLock = 0; // number of theads waiting to get access to read
         private Thread writeLockedThread = null; // the thread that is writing and so has the lock
@@ -97,3 +98,4 @@ public class MyReadWriteLock
         }
     }
 }
+

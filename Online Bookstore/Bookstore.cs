@@ -1,4 +1,6 @@
-﻿namespace Online_Bookstore
+﻿using System.Diagnostics;
+
+namespace Online_Bookstore
 {
 	public class Bookstore
 	{
