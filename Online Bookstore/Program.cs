@@ -73,11 +73,9 @@ namespace Bookstore3
 			bookListings.Add(book1);
 			BookListing book2 = new BookListing("Harry Potter", "J.K Rowling", "fantasy", "physical", 50, 500);
 			bookListings.Add(book2);
-			BookListing book3 = new BookListing("Fuck", "Fuck", "depression", "physical", 30, 50);
-			bookListings.Add(book3);
 			BookListing book4 = new BookListing("The hunger games", "idk", "dystopian", "physical", 234, 30);
 			bookListings.Add(book4);
-			BookListing book5 = new BookListing("It", "Stephen King", "horror", "physical", 10, 40);
+			BookListing book5 = new BookListing("It", "Stephen King", "horror", "physical", 30, 40);
 			bookListings.Add(book5);
 			BookListing book6 = new BookListing("The Mist", "Stephen King", "horror", "physical", 10, 40);
 			bookListings.Add(book6);
@@ -91,24 +89,32 @@ namespace Bookstore3
 			bookListings.Add(book10);
 
 			//b.filter = new AuthorFilter("Stephen King", bookListings);
-			//b.filter = b.filter.apply("Stephen King");
+			//b.filter = b.filter.apply("Stephen King", bookListings);
+			Console.WriteLine("\nGenre");
+			b.filter = new GenreFilter("horror", bookListings);
+			b.filter = b.filter.apply("horror", bookListings);
+			foreach (BookListing book in b.filter.bookListing)
+			{
+				Console.WriteLine(book.title);
+			}
 
-			//b.filter = new GenreFilter("horror", bookListings);
-			//b.filter = b.filter.apply("horror", bookListings);
-			//foreach (BookListing book in b.filter.bookListing)
-			//{
-			//	Console.WriteLine(book.title);
-			//}
+			Console.WriteLine("\nAuthor");
+			b.filter = new AuthorFilter("Stephen King", b.filter.bookListing);  // using the same filter object to create a new filter
+			b.filter = b.filter.apply("Stephen King", b.filter.bookListing);    // basically wrapping the same filter again and again
+			//b.filter = new GenreFilter("horror", b.filter.bookListing);
+			//b.filter = b.filter.apply("horror", b.filter.bookListing);
+			foreach (BookListing book in b.filter.bookListing)
+			{
+				Console.WriteLine(book.title);
+			}
 
-			//Console.WriteLine("Author");
-			//b.filter = new AuthorFilter("Stephen King", b.filter.bookListing);
-			//b.filter = b.filter.apply("Stephen King", b.filter.bookListing);
-			////b.filter = new GenreFilter("horror", b.filter.bookListing);
-			////b.filter = b.filter.apply("horror");
-			//foreach (BookListing book in b.filter.bookListing)
-			//{
-			//	Console.WriteLine(book.title);
-			//}
+			Console.WriteLine("\nPrice");
+			b.filter = new PriceRangeFilter("10, 20", b.filter.bookListing);
+			b.filter = b.filter.apply("10, 20", b.filter.bookListing);
+			foreach (BookListing book in b.filter.bookListing)
+			{
+				Console.WriteLine(book.title);
+			}
 			//Customer customer2 = new Customer();
 			//Customer customer3 = new Customer();
 			//Customer customer4 = new Customer();

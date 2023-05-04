@@ -3,11 +3,11 @@
 	public class GenreFilter : BookFilterAC
 	{
 		public GenreFilter(string criteria, List<BookListing> bookListing) : base(criteria, bookListing) {	}
-		public override BookFilterIF apply(string criteria, List<BookListing> books)
+		public override BookFilterIF apply(string criteria, List<BookListing> bookListings)
 		{
 			List<BookListing> filteredBooks = new List<BookListing>();
 
-			foreach (BookListing book in bookListing)
+			foreach (BookListing book in bookListings)
 			{
 				if (book.genre.Equals(criteria))
 				{
